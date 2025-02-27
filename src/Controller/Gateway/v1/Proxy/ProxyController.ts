@@ -7,10 +7,10 @@ import { IProxyManager } from "../../../../IManager/Gateway/Proxy/IProxyManager"
 export class ProxyController implements GatewayController {
   constructor(private readonly _proxyManager: IProxyManager) {}
 
-  @Get(":definition/*")
+  @Get(":definition/*route")
   async getAsync(
     @Param("definition") definition: string,
-    @Param("0") route: string
+    @Param("route") route: string
   ): Promise<StandardResult<string>> {
     return {
       data: await this._proxyManager.getAsync({
