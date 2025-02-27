@@ -10,14 +10,16 @@ export class ProxyController implements GatewayController {
   @Get(":definition/*route")
   async getAsync(
     @Param("definition") definition: string,
-    @Param("route") route: string
+    @Param("route") route: string | string[]
   ): Promise<StandardResult<string>> {
     console.log("definition", definition);
     console.log("route", route);
+    const fullPath = Array.isArray(route) ? route.join("/") : route;
+    console.log("fullPath", route);
     return {
       data: await this._proxyManager.getAsync({
         definition: definition,
-        route: route,
+        route: fullPath,
       }),
       status: 200,
       errorMessages: null,
