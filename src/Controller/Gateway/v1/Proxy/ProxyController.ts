@@ -12,6 +12,8 @@ export class ProxyController implements GatewayController {
     @Param("definition") definition: string,
     @Param("route") route: string
   ): Promise<StandardResult<string>> {
+    console.log("definition", definition);
+    console.log("route", route);
     return {
       data: await this._proxyManager.getAsync({
         definition: definition,
