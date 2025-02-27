@@ -28,7 +28,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@nestjs/core"
+      "@nestjs/core",
+      "@scarf/scarf"
     ]
   }
 }
